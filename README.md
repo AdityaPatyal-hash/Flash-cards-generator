@@ -1,1 +1,1 @@
-# Project-1st-year
+# Flash cards generator
