@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlashLearn – AI Flashcards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ========== HERO / SETUP SECTION ========== -->
+  <section class="hero" id="setup-section">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+
+    <header class="site-header">
+      <span class="logo">✦ FlashLearn</span>
+    </header>
+
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Learn anything,<br />
+        <em>one card at a time.</em>
+      </h1>
+      <p class="hero-sub">Type a topic, choose how many cards, and let AI build your deck instantly.</p>
+
+      <!-- Setup Form -->
+      <div class="setup-card">
+        <div class="form-group">
+          <label for="topic-input">Topic</label>
+          <input
+            type="text"
+            id="topic-input"
+            placeholder="e.g. Photosynthesis, World War II, JavaScript…"
+            autocomplete="off"
+          />
+          <!-- Quick topic suggestion chips -->
+          <div class="topic-chips">
+            <span class="chips-label">Try:</span>
+            <button type="button" class="chip" data-topic="JavaScript">⚡ JavaScript</button>
+            <button type="button" class="chip" data-topic="Photosynthesis">🌿 Photosynthesis</button>
+            <button type="button" class="chip" data-topic="Solar System">🪐 Solar System</button>
+            <button type="button" class="chip" data-topic="World War II">🏛️ World War II</button>
+            <button type="button" class="chip" data-topic="Python">🐍 Python</button>
+            <button type="button" class="chip" data-topic="HTML & CSS">🎨 HTML & CSS</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="count-input">Number of cards <span class="count-badge" id="count-display">5</span></label>
+          <input type="range" id="count-input" min="3" max="12" value="5" />
+          <div class="range-labels"><span>3</span><span>12</span></div>
+        </div>
+
+        <button class="btn-generate" id="generate-btn">
+          Generate Flashcards ✦
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FLASHCARD DECK SECTION ========== -->
+  <section class="deck-section hidden" id="deck-section">
+    <div class="deck-header">
+      <div>
+        <h2 class="deck-title" id="deck-title">Topic</h2>
+        <p class="deck-hint">Click any card to flip it • Click 🔊 to listen</p>
+      </div>
+      <div class="deck-header-actions">
+        <button class="btn-secondary" id="shuffle-btn" title="Shuffle cards">🔀 Shuffle</button>
+        <button class="btn-back" id="back-btn">← New Deck</button>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="progress-info">
+      <p class="progress-text" id="progress-text">0 / 0 flipped</p>
+      <button class="btn-text" id="flip-all-btn">Flip all cards</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="cards-grid" id="cards-grid"></div>
+
+    <!-- Completion message -->
+    <div class="completion hidden" id="completion">
+      <span class="completion-icon">🎉</span>
+      <h3>You flipped them all!</h3>
+      <p>Great job reviewing your deck.</p>
+      <button class="btn-reset" id="reset-btn">Flip All Back</button>
+    </div>
+  </section>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay hidden" id="loading-overlay">
+    <div class="spinner"></div>
+    <p id="loading-text">Building your deck…</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
